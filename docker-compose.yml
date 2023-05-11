@@ -1,0 +1,21 @@
+version: "3.5"
+# 連接到外部 laradock 的網路，未啟用 laradock 可以不用設定 networks
+networks:
+  laradock_backend:
+    external: true
+
+services:
+  workspace:
+    build:
+      context: ./workspace
+      args:
+        - GODOCK_APP_PATH_HOST=${APP_PATH_HOST}
+        - GODOCK_EXTENSION_SODIUM=${EXTENSION_SODIUM}
+        - GODOCK_GO_VERSION=${GO_VERSION}
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}
+    tty: true
+    networks:
+      - laradock_backend
