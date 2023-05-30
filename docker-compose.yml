@@ -11,6 +11,7 @@ services:
       args:
         - GODOCK_APP_PATH_HOST=${APP_PATH_HOST}
         - GODOCK_EXTENSION_SODIUM=${EXTENSION_SODIUM}
+        - GODOCK_EXTRA_HTOP=${EXTRA_HTOP}
         - GODOCK_GO_VERSION=${GO_VERSION}
     ports:
       - "${PORT}:${PORT}"
